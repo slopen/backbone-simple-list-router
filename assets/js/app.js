@@ -15,7 +15,7 @@ define ([
       navigationStart: function (router){
 
         // links click to router navigate
-        $(document).on('click', 'a', function (){
+        $(document).on('click', 'a[href]', function (){
           router.navigate( $(this).attr('href'), true );
           return false;
         });

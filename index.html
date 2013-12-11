@@ -11,9 +11,17 @@
     <link rel="stylesheet" href="assets/css/bootstrap-theme.min.css">
     <link rel="stylesheet" href="assets/css/styles.css" type="text/css" media="screen"/>
 
+    <style>#preloader{position:absolute;top:50%;left:25%;width:45%;text-align:center}</style>
+
     <!-- scripts -->
    	<script data-main="assets/js/main.js" src="assets/js/libs/requirejs.js"></script>
-
+    <script>
+      requirejs.onResourceLoad = function (context, map, depArray){
+        var element = document.getElementById('log');
+        if (element) element.innerHTML = map.name.replace('-', ' ');
+      };
+    </script>
+    
     <!-- templates -->
     <script type="text/template" id="tpl-list">
         <h2>Items [<%= data.length%>]</h2>
@@ -50,7 +58,9 @@
 </head>
 <body>
 
-    <div id="main"></div>
+    <div id="main">
+        <div id="preloader"><div id="log"></div></div>
+    </div>
 
 </body>
 </html>
